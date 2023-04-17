@@ -13,6 +13,5 @@ module.exports = function (app) {
 
 function httpRedirect(req, res) {
     res.writeHead(301, { 'Location': 'https://www.mixiaomu.com/' });
-    console.log(res._header);
     res.end();
 }
