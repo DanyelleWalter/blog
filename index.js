@@ -8,14 +8,14 @@ var router = express.Router();
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'themes'));
 app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'static')));
 
 
 
@@ -52,7 +52,7 @@ app.use(function (err, req, res, next) {
 
 var debug = require('debug')('blog:server');
 var http = require('http');
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.PORT || 3000);
 app.set('port', port);
 var server = http.createServer(app);
 server.listen(port);
@@ -103,8 +103,9 @@ function onError(error) {
 
 function onListening() {
     var addr = server.address();
+
     var bind = typeof addr === 'string'
         ? 'pipe ' + addr
         : 'port ' + addr.port;
-    debug('Listening on ' + bind);
+    console.log('Listening on ' + bind);
 }
