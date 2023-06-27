@@ -1,5 +1,3 @@
-// This file is used to handle the routes for the users
-
 var express = require('express');
 var router = express.Router();
 
